@@ -37,20 +37,24 @@ function mergeSort(array) {
   }
 
   const middle = Math.floor(array.length / 2);
+  //console.log('this is mid', middle);
   let left = array.slice(0, middle);
   let right = array.slice(middle, array.length);
 
   left = mergeSort(left);
   right = mergeSort(right);
-  console.log(left, right);
+  //console.log(array);
   return merge(left, right, array);
 }
 
-function merge(left, right, array) {
+function merge(left, right, array=[]) {
   let leftIndex = 0;
   let rightIndex = 0;
   let outputIndex = 0;
 
+  // 1 2 3 4       5 6 7 8
+
+  //1 2 3 4 
   while (leftIndex < left.length && rightIndex < right.length) {
     if (left[leftIndex] < right[rightIndex]) {
       array[outputIndex++] = left[leftIndex++];
